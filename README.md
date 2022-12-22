@@ -1,24 +1,30 @@
-# README
+# Work Planning Service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Technologies
 
-Things you may want to cover:
+* Ruby 3.0.0
+* Rails 7.0.4
+* TestSuite Rspec
+* Faker
 
-* Ruby version
+## Development Setup
 
-* System dependencies
+1. Install gems and their dependencies
 
-* Configuration
+  $ bundle install
 
-* Database creation
+2. Run this command to create and setup DB
+    
+  $ rails db:create db:migrate
 
-* Database initialization
+## For starting the development server
 
-* How to run the test suite
+  $ bundle exec rails s
 
-* Services (job queues, cache servers, search engines, etc.)
+* Development server by default start on the port 3000
 
-* Deployment instructions
+## For running Test cases
 
-* ...
+Run following command to run the test cases
+
+  $ rails rspec
