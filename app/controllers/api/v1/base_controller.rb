@@ -32,6 +32,14 @@ module Api
         end
       end
 
+      def destroy
+        if resource.destroy
+          render json: resource
+        else
+          render json: { message: resource.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
       def collection
         @collection ||= model.all
       end

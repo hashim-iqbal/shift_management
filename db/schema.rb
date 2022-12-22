@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_125400) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_20_173712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "shifts", force: :cascade do |t|
+    t.string "shift_type", null: false
+    t.date "day", null: false
+    t.bigint "worker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day", "worker_id"], name: "index_shifts_on_day_and_worker_id", unique: true
+    t.index ["worker_id"], name: "index_shifts_on_worker_id"
+  end
 
   create_table "workers", force: :cascade do |t|
     t.string "first_name", null: false
@@ -23,4 +33,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_125400) do
     t.index ["email"], name: "index_workers_on_email", unique: true
   end
 
+  add_foreign_key "shifts", "workers"
 end
